@@ -47,22 +47,16 @@
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav side-nav">
                             <li class="active">
-                                <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                                <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Registration</a>
                             </li>
                             <li>
-                                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                                <a href="login.html"><i class="fa fa-fw fa-bar-chart-o"></i> Login</a>
                             </li>
                             <li>
-                                <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                                <a href="tables.html"><i class="fa fa-fw fa-table"></i> User Dashboard</a>
                             </li>
                             <li>
-                                <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                            </li>
-                            <li>
-                                <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Billing</a>
-                            </li>
-                            <li>
-                                <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Request Resources</a>
+                                <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Request Resources</a>
                             </li>
                         </ul>
                     </div>
@@ -91,14 +85,15 @@
                         </div>
                         <!-- /.row -->
                         <h1>Select your resources</h1>
-        <form id = "resources"  method = "post" action = "http://localhost:8888/requestHandler.js" class = "resources" >
+        <form id = "resources"  action = "js/requestHandler.js"  method = "post" class = "resources" >
+        <div class = "jumbotron">
 <div class = "input-group">
                         <label> Select Storage: 
 <select id="storage">
-<option value="100MB Storage">100MB Storage </option>
-<option value="500MB Storage"> 500MB Storage </option>
-<option value="1GB Storage">1GB Storage </option>
-<option value="5GB Storage"> 5GB Storage</option>
+<option value="100">100MB Storage </option>
+<option value="500"> 500MB Storage </option>
+<option value="1000">1000MB Storage </option>
+<option value="5000"> 5000MB Storage</option>
 </select> </br> </br>
 </label>
 </div>
@@ -106,34 +101,49 @@
 <div class = "input-group">
                         <label> Select Memory: 
 <select id="memory">
-<option value="100MB Storage">100MB Storage </option>
-<option value="500MB Storage"> 500MB Storage </option>
-<option value="1GB Storage">1GB Storage </option>
-<option value="5GB Storage"> 5GB Storage</option>
+<option value="100">100MB Storage </option>
+<option value="500"> 500MB Storage </option>
+<option value="1000">1000MB Storage </option>
+<option value="5000"> 5000MB Storage</option>
 </select> </br> </br>
 </label>
 </div>
 
 <div class = "input-group">
-                        <label> Select CPU Instances: 
-<select id="cpu">
-<option value="1 Instance"> 1 Instance</option>
-<option value="2 Instance">2 Instance</option>
-<option value="3 Instance">3 Instance</option>
-<option value="4 Instance">4 Instance</option>
+                        <label> Select Device
+<select id="device">
+<option value="Apple iOS"> Apple iOS</option>
+<option value="Android OS"> Android OS</option>
+<option value="Windows OS"> Windows OS</option>
+<option value="Linux OS"> Linux OS</option>
 </select> </br> </br>
 </label>
 </div>
 
-<div class = <"btn-group">
-<button id = "btn1" class = "btn btn-default" onclick ="sendToServer()"> Submit </button>
-<button id = "btn2" class = "btn btn-default" onclick ="refresh()"> Reset </button>
+<div class = "input-group">
+                        <label> Select Network Bandwidth
+<select id="network">
+<option value="10"> 10 Mbps</option>
+<option value="50">50 Mbps</option>
+<option value="100">100 Mbps</option>
+<option value="200">200 Mbps</option>
+</select> </br> </br>
+</label>
 </div>
+<div class="col-md-offset-5">
+<div class = <"btn-group btn-group-justified">
+ <input type="button"  name = "button" value ="Submit" class="btn btn-default btn-lg" id="btn1" onclick="sendToServer()"> &nbsp; &nbsp;
+<button id = "btn2" class = "btn btn-default btn-lg " onclick ="refresh()"> Reset </button> 
+</div> </div>
 </form>
+
+</div>
+
+
 
            <!-- jQuery -->
            <script src="js/jquery.js"></script>
-            <script src="buttonrequest.js"></script>
+            <script src="js/buttonrequest.js"></script>
 
            <!-- Bootstrap Core JavaScript -->
            <script src="js/bootstrap.min.js"></script>

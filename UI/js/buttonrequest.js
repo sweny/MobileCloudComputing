@@ -2,23 +2,26 @@ var userResources;
 var httpRequest;
 var s1 = document.getElementById("storage");
 var m1 = document.getElementById("memory");
-var c1 = document.getElementById("cpu");
+var d1 = document.getElementById("device");
+var n1 = document.getElementById("network");
+
 function sendToServer(){
 	console.log("in store data func");
-	 userResources = {
-	 	
-	 	 storage : s1.options[s1.selectedIndex].value,
-	 	
-	 	 memory : m1.options[m1.selectedIndex].value,
-	 	 
-	 	cpu : c1.options[c1.selectedIndex].value,
-	 	
+	userResources = {
 
-    };
-     console.log("userresources: "+JSON.stringify(userResources));
-    console.log("in store data func end ");
-    handleButtonRequest();
-    console.log("in store data func checkng vl"+userResources);
+		storage : s1.options[s1.selectedIndex].value,
+
+		memory : m1.options[m1.selectedIndex].value,
+
+		device : d1.options[d1.selectedIndex].value,
+
+		network : n1.options[n1.selectedIndex].value
+
+	};
+	console.log("userresources: "+JSON.stringify(userResources));
+	console.log("in store data func end ");
+	handleButtonRequest();
+	console.log("in store data func checkng vl"+userResources);
 }
 
 function handleButtonRequest(e){
@@ -28,9 +31,9 @@ function handleButtonRequest(e){
 	try
 	{
 		httpRequest = new XMLHttpRequest();
-		httpRequest.onreadstatechange = handleResponse;
+		httpRequest.onreadystatechange = handleResponse;
 		httpRequest.open("POST", "http://localhost:8888/requestHandler.js",true);
-		//httpRequest.setRequestHeader("Content-Type", "application/json");
+		httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		httpRequest.send(JSON.stringify(userResources));
 		console.log("in handle req try func");
 	}
@@ -40,7 +43,7 @@ function handleButtonRequest(e){
 	}
 }
 function handleResponse(e){
-		console.log("in handle response func");
+	console.log("in handle response func");
 
 	if(httpRequest.readyState == 4 && httpRequest.status == 200)
 	{
